@@ -4,6 +4,23 @@ var data = [
     { id: 3, title: 'Captain America', year: '2011' },
 ];
 
+
+function getNextId() {
+    return Math.max(...data.map(movie => movie.id)) + 1;
+}
+
+function insert(movie) {
+    movie.id = getNextId();
+    data.push(movie);
+}
+
+function update(movie) {
+    movie.id = parseInt(movie.id, 10);
+    const index = data.findIndex(item => item.id === movie.id);
+    data[index] = movie;
+}
+
+
 module.exports = {
     getAll() {
         return data;
@@ -13,5 +30,8 @@ module.exports = {
     },
     get(id) {
         return data.find( movie => movie.id === id);
+    },
+    save(movie) {
+        movie.id === '' ? insert(movie) : update(movie);
     }
 }

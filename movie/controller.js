@@ -8,6 +8,18 @@ function listAction(request, response) {
     response.send(body);
 }
 
+
+function saveAction(request, response) {
+    const movie = {
+        id: request.body.id,
+        title: request.body.title,
+        year: request.body.year
+    };
+    model.save(movie);
+    response.redirect(request.baseUrl);
+}
+
+
 function deleteAction(request, response) {
     const id = parseInt(request.params.id, 10);
     model.delete(id);
@@ -26,5 +38,6 @@ function formAction(request, response) {
 module.exports = {
     listAction,
     deleteAction,
-    formAction
+    formAction,
+    saveAction
 };

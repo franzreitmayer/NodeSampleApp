@@ -4,11 +4,12 @@ const router = express.Router;
 const movieRouter = require('./movie');
 const morgan = require('morgan');
 const { logger } =require('./util');
+const bodyParser = require('body-parser');
 
 const app = express();
 
 
-
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', (req,res) => {res.redirect('/movie')});

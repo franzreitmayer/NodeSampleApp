@@ -20,6 +20,7 @@ module.exports = function render(movies) {
     .join('')}
     </tbody>
     </table>
+    <a href="/movie/form">neu</a>
     </body>
     </html>
     `;
